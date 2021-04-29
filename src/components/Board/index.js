@@ -1,7 +1,7 @@
 import './style.css';
 import Square from '../../components/Square';
 
-export default function() {
+export default function Board() {
   return (
     <div className="board">
       <div className="row">
