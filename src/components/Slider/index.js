@@ -4,15 +4,17 @@ import './style.css';
 
 export default function Slider(props) {
     const { duration, onChangeSliderValue } = props;
-    const animationDuration = (duration / 1000.0 * 2.0 * 100.0 ) + 's';
+    const animationDuration = (duration / 1000.0 * 2.0 ) + 's';
 
     useEffect(() => {
         const indicator = getComputedStyle(document.getElementById("indicator"));
         
-        const interval = setInterval(() => {
+        const slide = setInterval(() => {
             const sliderValue = parseInt(indicator.getPropertyValue('margin-left'));
             onChangeSliderValue(sliderValue);
-        }, duration);
+        }, 1);
+
+        return () => clearInterval(slide);
     }, [])
 
     return (

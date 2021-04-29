@@ -9,7 +9,7 @@ export default function Game() {
   const [ playerPosition, setPlayerPosition ] = usePosition();
   const [ sliderValue, setSliderValue ] = useState(0);
 
-  const duration = 50;
+  const duration = 1000;
 
   const handleOnClickGo = () => {
     if(sliderValue >= 45 && sliderValue <= 55) {
