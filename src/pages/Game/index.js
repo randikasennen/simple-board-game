@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import './style.css';
 import Board from '../../components/Board';
@@ -9,17 +9,21 @@ export default function Game() {
   const [ playerPosition, setPlayerPosition ] = usePosition();
   const [ sliderValue, setSliderValue ] = useState(0);
 
-  const duration = 3;
+  const duration = 50;
 
-  useEffect(() => {
-    const interval = setInterval(() => setSliderValue(sliderValue => (sliderValue + 1) % 101), duration);
-  }, [])
+  const handleOnClickGo = () => {
+    if(sliderValue >= 45 && sliderValue <= 55) {
+        setPlayerPosition(playerPosition => (playerPosition + 1) % 9);
+    }
+  }
+
 
   return (
     <div>
       <Board />
-      <button onClick={() => setPlayerPosition((playerPosition + 1) % 9)}>GO!</button>
-      <Slider sliderValue={sliderValue} duration={duration}/>
+      <button onClick={handleOnClickGo}>GO!</button>
+      <Slider duration={duration} onChangeSliderValue={(sliderValue) => setSliderValue(sliderValue)}/>
+      <h3>{sliderValue}</h3>
     </div>
   );
 }
