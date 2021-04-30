@@ -7,6 +7,7 @@ A Simple Board Game developed using React.
 In the project directory,
 
 (1) Run `npm install`.
+
 (2) Run `npm start`.
 
 ## Run the app in the development mode
