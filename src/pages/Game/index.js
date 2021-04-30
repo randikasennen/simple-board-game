@@ -10,14 +10,16 @@ export default function Game() {
   const [ playerPosition, setPlayerPosition ] = usePosition();
   const [ sliderValue, setSliderValue ] = useState(0);
   const [ round, setRound ] = useState(0);
-  const [ currentRoundMarks, setCurrentRoundMarks ] = useState(0);
   const [ totalMarks, setTotalMarks ] = useState(0);
-  const [ lastRoundMarks, setLastRoundMarks ] = useState(null);
+  const [ currentRoundMarks, setCurrentRoundMarks ] = useState(0);
   const [ highestRoundMarks, setHighestRoundMarks ] = useState(null);
+  const [ lastRoundMarks, setLastRoundMarks ] = useState(null);
   const [ highestSingleHit, setHighestSingleHit ] = useState(null);
+  const [ lastSingleHit, setLastSingleHit ] = useState(null);
+  const [ hittingAccuracyStatus, setHittingAccuracyStatus ] = useState({ status: 'Hit!', color: '#ccc' });
   
   const duration = 1000;
-  const tolerance = 10;
+  const tolerance = 5;
 
   useEffect(() => {
     if(!playerPosition) {
@@ -34,10 +36,14 @@ export default function Game() {
   }, [playerPosition]);
 
   const handleOnClickGo = () => {
-    if(sliderValue >= (50 - tolerance) && sliderValue <= (50 + tolerance)) {
+    const difference = Math.abs(50 - sliderValue);
+    
+    if(difference <= tolerance) {
         evaluate();
         setPlayerPosition(playerPosition => (playerPosition + 1) % 9);
     }
+
+    displayHittingAccuracyStatus(difference);
   }
 
   const evaluate = () => {
@@ -45,9 +51,20 @@ export default function Game() {
       const accuracy = tolerance / accuracyFactor;
       const marks = Math.round(accuracy / tolerance * 100 / 10);
       setCurrentRoundMarks(currentMarks => currentMarks + marks);
+      setLastSingleHit(marks);
 
       if(!highestSingleHit || marks > highestSingleHit) {
           setHighestSingleHit(marks);
+      }
+  }
+
+  const displayHittingAccuracyStatus = (difference) => {
+      switch(difference) {
+          case 0: setHittingAccuracyStatus({ status: 'Perfect!', color: '#009900' }); break;
+          case 1: case 2: setHittingAccuracyStatus({ status: 'Too Close!', color: '#0080ff' }); break;
+          case 3: case 4: setHittingAccuracyStatus({ status: 'Not Bad!', color: '#9933ff' }); break;
+          case 5: setHittingAccuracyStatus({ status: 'Better on Next Time!', color: '#ff9900' }); break;
+          default: setHittingAccuracyStatus({ status: 'Try Again!', color: '#ff3300' }); break;
       }
   }
 
@@ -64,6 +81,7 @@ export default function Game() {
             <div className="actions">
                 <Slider duration={duration} onChangeSliderValue={(sliderValue) => setSliderValue(sliderValue)}/>
                 <button className="go" onClick={handleOnClickGo}>GO!</button>
+                <h3 className="accuracy-status" style={{ color: hittingAccuracyStatus.color }}>{hittingAccuracyStatus.status}</h3>
             </div>
         </div>
 
@@ -80,14 +98,13 @@ export default function Game() {
                     <StatisticsCard name="Last Round Marks" value={lastRoundMarks || 'N/A'} color="#ff9900" />
                 </div>
                 <div>
-                    <StatisticsCard name="Highest Single Hit" value={highestSingleHit || 'N/A'} color="#ff3300" />
-                    <StatisticsCard name="Last Single Hit" value={highestSingleHit || 'N/A'} color="#0080ff" />
+                    <StatisticsCard name="Highest Single Hit" value={highestSingleHit ? highestSingleHit + ' Marks' : 'N/A'} color="#ff3300" />
+                    <StatisticsCard name="Last Single Hit" value={lastSingleHit ? lastSingleHit + ' Marks' : 'N/A'} color="#0080ff" />
                 </div>
             </div>
 
             <p className="instructions">Hit on the "GO" button to move the player when the slider is at its middle position.</p>
             <p className="instructions">Be more accurate to score more!</p>
-            
         </div>
       </div>
     </div>
