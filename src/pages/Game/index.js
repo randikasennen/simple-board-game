@@ -7,7 +7,7 @@ import StatisticsCard from '../../components/StatisticsCard';
 import { usePosition } from '../../contexts/PositionContext';
 
 export default function Game() {
-  const [ playerPosition, setPlayerPosition ] = usePosition();
+  const [ playerPosition, setPlayerPosition ] = usePosition();  // Current position of the player.
   const [ sliderValue, setSliderValue ] = useState(0);
   const [ round, setRound ] = useState(0);
   const [ totalMarks, setTotalMarks ] = useState(0);
@@ -18,9 +18,12 @@ export default function Game() {
   const [ lastSingleHit, setLastSingleHit ] = useState(null);
   const [ hittingAccuracyStatus, setHittingAccuracyStatus ] = useState({ status: 'Hit!', color: '#ccc' });
   
-  const duration = 1000;
-  const tolerance = 5;
+  const duration = 1000;    // Slider animation duration to go from one end to the other end.
+  const tolerance = 5;      // Tolerance allowed from the middle point for an accepted hit.
 
+  /*
+   * In each movement of player.
+   */
   useEffect(() => {
     if(!playerPosition) {
         setTotalMarks(currentMarks => currentMarks + currentRoundMarks);
@@ -35,6 +38,9 @@ export default function Game() {
     }
   }, [playerPosition]);
 
+  /*
+   * Function to handle event of clicking "GO" button.
+   */
   const handleOnClickGo = () => {
     const difference = Math.abs(50 - sliderValue);
     
@@ -46,6 +52,9 @@ export default function Game() {
     displayHittingAccuracyStatus(difference);
   }
 
+  /*
+   * Function to evaluate marks.
+   */
   const evaluate = () => {
       const accuracyFactor = Math.abs(50 - sliderValue) + 1;
       const accuracy = tolerance / accuracyFactor;
@@ -58,6 +67,9 @@ export default function Game() {
       }
   }
 
+  /*
+   * Function to display accuracy status.
+   */
   const displayHittingAccuracyStatus = (difference) => {
       switch(difference) {
           case 0: setHittingAccuracyStatus({ status: 'Perfect!', color: '#009900' }); break;

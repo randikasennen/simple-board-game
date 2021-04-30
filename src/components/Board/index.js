@@ -1,6 +1,10 @@
 import './style.css';
 import Square from '../../components/Square';
 
+/*
+ * Implementation of Game Board as a component.
+ * Index <- For configuring the player movements.
+ */
 export default function Board() {
   return (
     <div className="board">
