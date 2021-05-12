@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 
 import './style.css';
-import Board from '../../components/Board';
-import Slider from '../../components/Slider';
-import StatisticsCard from '../../components/StatisticsCard';
+import Board from '../../components/Board/Board';
+import Slider from '../../components/Slider/Slider';
+import StatisticsCard from '../../components/StatisticsCard/StatisticsCard';
 import { usePosition } from '../../contexts/PositionContext';
 
 export default function Game() {

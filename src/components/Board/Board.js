@@ -1,5 +1,5 @@
 import './style.css';
-import Square from '../../components/Square';
+import Square from '../Square/Square';
 
 /*
  * Implementation of Game Board as a component.
