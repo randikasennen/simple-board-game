@@ -41,10 +41,10 @@ export default function Slider(props: Props) {
     }, [])
 
     return (
-        <div className="slider-container">
+        <div className="slider-container" data-testid="slider">
             <div className="slider left"></div>
             <div className="slider right"></div>
-            <div className="indicator" id="indicator" style={{ animationDuration }}></div>
+            <div className="indicator" id="indicator" data-testid="indicator" style={{ animationDuration }}></div>
         </div>
     )
 }
