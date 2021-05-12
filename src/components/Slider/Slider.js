@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import './style.css';
+import './Slider.scss';
 
 export default function Slider(props) {
     /*

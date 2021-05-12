@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import './style.css';
+import './Game.scss';
 import Board from '../../components/Board/Board';
 import Slider from '../../components/Slider/Slider';
 import StatisticsCard from '../../components/StatisticsCard/StatisticsCard';

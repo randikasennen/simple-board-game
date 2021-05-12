@@ -1,4 +1,4 @@
-import './style.css';
+import './StatisticsCard.scss';
 
 export default function StatisticsCard(props) {
     const { name, value, color } = props;

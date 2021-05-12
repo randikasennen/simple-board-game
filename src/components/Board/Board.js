@@ -1,4 +1,4 @@
-import './style.css';
+import './Board.scss';
 import Square from '../Square/Square';
 
 /*

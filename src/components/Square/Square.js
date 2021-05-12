@@ -1,4 +1,4 @@
-import './style.css';
+import './Square.scss';
 import player from '../../icons/player.png';
 import { usePosition } from '../../contexts/PositionContext';
 

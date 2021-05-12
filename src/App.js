@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Game from './pages/Game';
+import Game from './pages/Game/Game';
 import PositionContextProvider from './contexts/PositionContext';
 
 export default function App() {
