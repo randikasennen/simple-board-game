@@ -13,9 +13,9 @@ export default function StatisticsCard(props: Props) {
     const { name, value, color } = props;
 
     return (
-        <div className="statistics-card" style={{ borderColor: color }}>
-            <div className="name" style={{ color: color }}>{name}</div>
-            <div className="value">{value}</div>
+        <div className="statistics-card" style={{ borderColor: color }} data-testid="statistics-card" >
+            <div className="name" style={{ color: color }} data-testid="name">{name}</div>
+            <div className="value" data-testid="value">{value}</div>
         </div>
     )
 }
