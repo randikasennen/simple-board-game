@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Game from './pages/Game/Game';
+import { GamePlayPage } from './pages';
 import PositionContextProvider from './contexts/PositionContext';
 
 export default function App() {
@@ -8,7 +8,7 @@ export default function App() {
 
   return (
     <PositionContextProvider value={[ playerPosition, setPlayerPosition ]}>
-      <Game />
+      <GamePlayPage />
     </PositionContextProvider>
   );
 }

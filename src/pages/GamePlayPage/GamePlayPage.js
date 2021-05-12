@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import './Game.scss';
-import Board from '../../components/Board/Board';
-import Slider from '../../components/Slider/Slider';
-import StatisticsCard from '../../components/StatisticsCard/StatisticsCard';
+import './GamePlayPage.scss';
+import { Board, Slider, StatisticsCard} from '../../components';
 import { usePosition } from '../../contexts/PositionContext';
 
-export default function Game() {
+export default function GamePlayPage() {
   const [ playerPosition, setPlayerPosition ] = usePosition();  // Current position of the player.
   const [ sliderValue, setSliderValue ] = useState(0);
   const [ round, setRound ] = useState(0);
