@@ -10,10 +10,10 @@ export default function GamePlayPage() {
   const [ round, setRound ] = useState(0);
   const [ totalMarks, setTotalMarks ] = useState(0);
   const [ currentRoundMarks, setCurrentRoundMarks ] = useState(0);
-  const [ highestRoundMarks, setHighestRoundMarks ] = useState<number | null>(null);
-  const [ lastRoundMarks, setLastRoundMarks ] = useState<number | null>(null);
-  const [ highestSingleHit, setHighestSingleHit ] = useState<number | null>(null);
-  const [ lastSingleHit, setLastSingleHit ] = useState<number | null>(null);
+  const [ highestRoundMarks, setHighestRoundMarks ] = useState(0);
+  const [ lastRoundMarks, setLastRoundMarks ] = useState(0);
+  const [ highestSingleHit, setHighestSingleHit ] = useState(0);
+  const [ lastSingleHit, setLastSingleHit ] = useState(0);
   const [ hittingAccuracyStatus, setHittingAccuracyStatus ] = useState({ status: 'Hit!', color: '#ccc' });
   
   const duration = 1000;    // Slider animation duration to go from one end to the other end.
