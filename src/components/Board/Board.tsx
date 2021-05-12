@@ -7,7 +7,7 @@ import Square from '../Square/Square';
  */
 export default function Board() {
   return (
-    <div className="board">
+    <div className="board" data-testid="board" >
       <div className="row">
         <Square index={0} />
         <Square index={1} />
