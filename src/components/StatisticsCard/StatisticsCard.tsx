@@ -1,6 +1,15 @@
 import './StatisticsCard.scss';
 
-export default function StatisticsCard(props) {
+interface Props {
+    name: string;
+    value: number | string;
+    color: string;
+}
+
+/*
+ * Implementation of Statistics Card to deisplay scores.
+ */
+export default function StatisticsCard(props: Props) {
     const { name, value, color } = props;
 
     return (

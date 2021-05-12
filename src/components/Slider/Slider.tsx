@@ -2,7 +2,12 @@ import { useEffect } from 'react';
 
 import './Slider.scss';
 
-export default function Slider(props) {
+interface Props {
+    duration: any;
+    onChangeSliderValue: any;
+}
+
+export default function Slider(props: Props) {
     /*
      * duration <- in 'ms'.
      * onChangeSliderValue <- Callback function to get the value of slider.
@@ -20,7 +25,7 @@ export default function Slider(props) {
      * Setting up the Slider.
      */
     useEffect(() => {
-        const indicator = getComputedStyle(document.getElementById("indicator"));
+        const indicator = getComputedStyle(document.getElementById("indicator")!);
         
         /*
          * Get Slider value.
