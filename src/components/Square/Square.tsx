@@ -15,7 +15,7 @@ export default function Square(props: Props) {
     const [ playerPosition ] = usePosition();   // To show the player inside square.
 
     return (
-        <div className="square">
+        <div className="square" data-testid="square">
             {index === playerPosition && <img src={player} className="player" alt="player" />}
         </div>
     )
