@@ -4,10 +4,8 @@ import '@testing-library/jest-dom/extend-expect';
 
 
 test("board renders correctly with 9 squares", () => {
-    const { getByTestId } = render(<Board />);
-    const board = getByTestId("board");
-    const squares = board.getElementsByClassName("square");
+    const { getByTestId, getAllByTestId } = render(<Board />);
 
-    expect(board).toBeInTheDocument();
-    expect(squares.length).toBe(9);
+    expect(getByTestId("board")).toBeInTheDocument();
+    expect(getAllByTestId("square").length).toBe(9);
 })

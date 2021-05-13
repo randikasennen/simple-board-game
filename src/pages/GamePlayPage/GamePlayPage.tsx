@@ -90,7 +90,7 @@ export default function GamePlayPage() {
             <Board />
             <div className="actions">
                 <Slider duration={duration} onChangeSliderValue={(sliderValue: number) => setSliderValue(sliderValue)}/>
-                <button className="go" onClick={handleOnClickGo}>GO!</button>
+                <button className="go" onClick={handleOnClickGo} data-testid="go-button">GO!</button>
                 <h3 className="accuracy-status" style={{ color: hittingAccuracyStatus.color }}>{hittingAccuracyStatus.status}</h3>
             </div>
         </div>
