@@ -1,15 +1,15 @@
 import GamePlayPage from './GamePlayPage';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 
 test("game play page renders correctly", () => {
-    const { getByTestId, getAllByTestId } = render(<GamePlayPage />);
+    render(<GamePlayPage />);
 
-    expect(getByTestId("board")).toBeInTheDocument();
-    expect(getByTestId("slider")).toBeInTheDocument();
-    expect(getByTestId("go-button")).toBeInTheDocument();
+    expect(screen.getByTestId("board")).toBeInTheDocument();
+    expect(screen.getByTestId("slider")).toBeInTheDocument();
+    expect(screen.getByTestId("go-button")).toBeInTheDocument();
 
-    expect(getAllByTestId("square").length).toBe(9);
-    expect(getAllByTestId("statistics-card").length).toBe(6);
+    expect(screen.getAllByTestId("square").length).toBe(9);
+    expect(screen.getAllByTestId("statistics-card").length).toBe(6);
 })
