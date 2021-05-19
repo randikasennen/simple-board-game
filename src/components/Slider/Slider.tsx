@@ -38,7 +38,7 @@ export default function Slider(props: Props) {
         }, 1);
 
         return () => clearInterval(slide);
-    }, [])
+    }, [onChangeSliderValue])
 
     return (
         <div className="slider-container" data-testid="slider">

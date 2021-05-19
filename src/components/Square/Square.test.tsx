@@ -2,21 +2,10 @@ import { useEffect } from 'react';
 import Square from './Square';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { usePosition } from '../../contexts/PositionContext';
-
-
-function TestSquareRenderBehaviour(props: { index: number; position: number;  }) {
-    const { index, position } = props;
-    const [ playerPosition, setPlayerPosition ] = usePosition();
-
-    useEffect(() => { setPlayerPosition(position) }, []);
-
-    return <Square index={index} />
-}
 
 
 test("square renders with player when `index` equals to `playerPosition`", () => {
-    render(<TestSquareRenderBehaviour index={0} position={0} />);
+    render(<Square index={0} />);
     const square = screen.getByTestId("square");
 
     expect(square).toBeInTheDocument();
@@ -25,7 +14,7 @@ test("square renders with player when `index` equals to `playerPosition`", () =>
 
 
 test("square renders without player when `index` not equals to `playerPosition`", () => {
-    render(<TestSquareRenderBehaviour index={1} position={0} />);
+    render(<Square index={1} />);
     const square = screen.getByTestId("square");
     
     expect(square).toBeInTheDocument();

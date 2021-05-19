@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import playerPosition from './playerPosition';
+import gamePlay from './gamePlay';
 
 export default combineReducers({
-    playerPosition
+    gamePlay
 })
