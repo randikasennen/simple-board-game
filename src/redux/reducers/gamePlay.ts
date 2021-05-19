@@ -1,6 +1,6 @@
 import { GamePlayActionType } from '../actions/gamePlayActions';
 
-interface Action {
+interface ClickGoAction {
     type: GamePlayActionType,
     payload: number
 }
@@ -20,7 +20,7 @@ const initialState = {
     hittingAccuracyStatus: { status: 'Hit!', color: '#ccc' }
 }
 
-export default function gamePlay(state = initialState, action: Action) {
+export default function gamePlay(state = initialState, action: ClickGoAction) {
     switch (action.type) {
         case GamePlayActionType.HANDLE_ON_CLICK_GO: {
             const sliderValue = action.payload;
