@@ -1,6 +1,6 @@
 import './Square.scss';
 import player from '../../icons/player.png';
-import { usePosition } from '../../contexts/PositionContext';
+import { useSelector } from 'react-redux';
 
 interface Props {
     index: number;
@@ -12,7 +12,7 @@ interface Props {
 export default function Square(props: Props) {
     const { index } = props;
 
-    const [ playerPosition ] = usePosition();   // To show the player inside square.
+    const playerPosition = useSelector((state: any) => state.playerPosition);   // To show the player inside square.
 
     return (
         <div className="square" data-testid="square">

@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { movePlayerToNextPosition } from '../../redux/actions/playerActions';
 
 import './GamePlayPage.scss';
 import { Board, Slider, StatisticsCard} from '../../components';
-import { usePosition } from '../../contexts/PositionContext';
 
 export default function GamePlayPage() {
-  const [ playerPosition, setPlayerPosition ] = usePosition();  // Current position of the player.
+  const dispatch = useDispatch();
+
+  const playerPosition = useSelector((state: any) => state.playerPosition);
+
   const [ sliderValue, setSliderValue ] = useState(0);
   const [ round, setRound ] = useState(0);
   const [ totalMarks, setTotalMarks ] = useState(0);
@@ -44,7 +48,7 @@ export default function GamePlayPage() {
     
     if(difference <= tolerance) {
         evaluate();
-        setPlayerPosition((playerPosition + 1) % 9);
+        dispatch(movePlayerToNextPosition());
     }
 
     displayHittingAccuracyStatus(difference);

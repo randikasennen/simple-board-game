@@ -1,14 +1,11 @@
-import { useState } from 'react';
-
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import { GamePlayPage } from './pages';
-import PositionContextProvider from './contexts/PositionContext';
 
 export default function App() {
-  const [ playerPosition, setPlayerPosition ] = useState(0);
-
   return (
-    <PositionContextProvider value={[ playerPosition, setPlayerPosition ]}>
+    <Provider store={store}>
       <GamePlayPage />
-    </PositionContextProvider>
+    </Provider>
   );
 }
