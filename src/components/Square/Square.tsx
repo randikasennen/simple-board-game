@@ -1,6 +1,6 @@
 import './Square.scss';
 import player from '../../icons/player.png';
-import { usePlayerPosition } from '../../redux/hooks/gamePlay';
+import { usePlayerPosition } from '../../redux/gamePlay/hooks';
 
 interface Props {
     index: number;

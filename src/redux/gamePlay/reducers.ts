@@ -1,4 +1,4 @@
-import { GamePlayActionType } from '../actions/gamePlayActions';
+import { GamePlayActionType } from './actions';
 
 interface ClickGoAction {
     type: GamePlayActionType,

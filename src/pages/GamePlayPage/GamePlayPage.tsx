@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { handleOnClickGo } from '../../redux/actions/gamePlayActions';
-import { useGamePlayState } from '../../redux/hooks/gamePlay';
+import { handleOnClickGo } from '../../redux/gamePlay/actions';
+import { useGamePlayState } from '../../redux/gamePlay/hooks';
 
 import './GamePlayPage.scss';
 import { Board, Slider, StatisticsCard} from '../../components';
