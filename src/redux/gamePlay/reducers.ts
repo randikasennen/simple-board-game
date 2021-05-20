@@ -1,14 +1,14 @@
 import { GamePlayActionType } from './actions';
+import { NUMBER_OF_SQUARES_IN_BOARD, SLIDER_LENGTH, ACCURACY_TOLERANCE } from './constants';
 
 interface ClickGoAction {
     type: GamePlayActionType,
     payload: number
 }
 
-const NUMBER_OF_SQUARES_IN_BOARD = 9;
-const ACCURACY_TOLERANCE = 5;   // Tolerance allowed from the middle point for an accepted hit.
+export type GamePlayState = typeof initialState;
 
-const initialState = {
+export const initialState = {
     playerPosition: 0,
     round: 1,
     totalMarks: 0,
@@ -24,7 +24,7 @@ export default function gamePlay(state = initialState, action: ClickGoAction) {
     switch (action.type) {
         case GamePlayActionType.HANDLE_ON_CLICK_GO: {
             const sliderValue = action.payload;
-            const difference = Math.abs(50 - sliderValue);
+            const difference = Math.abs((SLIDER_LENGTH / 2) - sliderValue);
 
             if(difference <= ACCURACY_TOLERANCE) {
                 const marks = evaluateMarks(difference);
@@ -45,9 +45,9 @@ export default function gamePlay(state = initialState, action: ClickGoAction) {
 /**
  * Function to evaluate marks.
  */
-const evaluateMarks = (difference: number) => {
+export const evaluateMarks = (difference: number) => {
     const accuracyFactor = difference + 1;
-    const accuracy = ACCURACY_TOLERANCE / accuracyFactor;
+    const accuracy = ACCURACY_TOLERANCE / parseFloat(accuracyFactor.toFixed(2));
     const marks = Math.round(accuracy / ACCURACY_TOLERANCE * 100 / 10);
     
     return marks;
