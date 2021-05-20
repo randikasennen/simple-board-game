@@ -1,11 +1,12 @@
-import { useEffect } from 'react';
+import { Provider } from 'react-redux';
+import store from '../../redux/store';
 import Square from './Square';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
 
 test("square renders with player when `index` equals to `playerPosition`", () => {
-    render(<Square index={0} />);
+    render(<Provider store={store}><Square index={0} /></Provider>);
     const square = screen.getByTestId("square");
 
     expect(square).toBeInTheDocument();
@@ -14,7 +15,7 @@ test("square renders with player when `index` equals to `playerPosition`", () =>
 
 
 test("square renders without player when `index` not equals to `playerPosition`", () => {
-    render(<Square index={1} />);
+    render(<Provider store={store}><Square index={1} /></Provider>);
     const square = screen.getByTestId("square");
     
     expect(square).toBeInTheDocument();
